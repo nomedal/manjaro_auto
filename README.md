@@ -1,0 +1,1 @@
+# Automatic manjaro setup test
