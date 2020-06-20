@@ -6,31 +6,14 @@ function packages_base() {
 
 
     yes | sudo pacman -Syu \
-#        git \
-#        i3-gaps \
-#        i3lock \
-#        thunar \
-#        lxappearance \
-#        rofi \
-#        git \
-#        gnome-2048 \
-#        go \
-#        zsh \
-#        i3status \
-#        autorandr \
-#        compton \
-#        polybar
 
     pamac install \
-    	# pdfsam
-       # latte-dock \
-#        discord \
-#        nordvpn-bin \
-#        dropbox \
-#        spotify \
-#        insomnia \
-#        visual-studio-code-bin
-#        dropbox
+    	pdfsam \
+       	latte-dock \
+       	discord \
+       	nordvpn-bin \
+      	dropbox \
+       	spotify \
 }
 
 packages_base
