@@ -19,12 +19,14 @@ function packages_base() {
        	nordvpn-bin \
        	dropbox \
        	spotify \
-       	insomnia \
+       	musixmatch-bin \
        	visual-studio-code-bin \
        	virt-manager \
        	slack-desktop \
-       	sublime-text \
-       	wondershaper-git
+       	sublime-text-3-imfix \
+       	wondershaper-git \
+
+   	echo "==== DONE ===="
 }
 
 function git_setup() {
@@ -69,6 +71,7 @@ function git_setup() {
 	done
 	
 	curl -u "$user_name" --data "{\"title\":\"$ssh_title\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" https://api.github.com/user/keys
+	echo "==== DONE ===="
 }
 
 function disclaimer() {
@@ -95,6 +98,7 @@ function disclaimer() {
 }
 
 function bashrc_setup() {
+	echo "==== .bashrc setup initated ===="
 	mkdir -p backup	# if dir doen'st exist
 	chmod +x uninstall.sh 
 
@@ -104,6 +108,7 @@ function bashrc_setup() {
 	echo 'alias home="cd ~"' >> ~/.bashrc
 
 	exec bash
+	echo "==== DONE ===="
 }
 
 disclaimer
