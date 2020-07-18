@@ -119,20 +119,20 @@ function zsh_setup() {
 
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-	echo "=== DONE ==="
+	echo "==== DONE ===="
 }
 
 function reboot() {
-	read -n1 -p "===> For changes to take effect, you should reboot. Do it now? [y/n]" doit 
+	read -n1 -p "==> For changes to take effect, you should reboot. Do it now? [y/n]" doit 
 	case $doit in  
 	  y|Y)  sudo shutdown now -r;; 
-	  n|N) printf "\n=== SETUP COMPLETE ====";; 
+	  n|N) printf "\n==== SETUP COMPLETE ====";; 
 	  #*) echo dont know ;; 
 	esac
 }
 disclaimer
 packages_base
-#git_setup
+git_setup
 bashrc_setup
 zsh_setup
 reboot
