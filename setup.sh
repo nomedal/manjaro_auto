@@ -10,6 +10,7 @@ function packages_base() {
 
     pamac install \
     	clonezilla \
+    	zsh \
     	pyenv \
     	thunderbird \
     	qbittorrent \
@@ -25,6 +26,7 @@ function packages_base() {
        	slack-desktop \
        	sublime-text-3-imfix \
        	wondershaper-git \
+
 
    	echo "==== DONE ===="
 }
@@ -111,7 +113,26 @@ function bashrc_setup() {
 	echo "==== DONE ===="
 }
 
+function zsh_setup() {
+	echo "==== zsh_setup initated ===="
+	sudo chsh -s /usr/bin/zsh
+
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+	echo "=== DONE ==="
+}
+
+function reboot() {
+	read -n1 -p "===> For changes to take effect, you should reboot. Do it now? [y/n]" doit 
+	case $doit in  
+	  y|Y)  sudo shutdown now -r;; 
+	  n|N) printf "\n=== SETUP COMPLETE ====";; 
+	  #*) echo dont know ;; 
+	esac
+}
 disclaimer
 packages_base
-git_setup
+#git_setup
 bashrc_setup
+zsh_setup
+reboot
