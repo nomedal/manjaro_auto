@@ -10,6 +10,7 @@ function packages_base() {
 
     pamac install \
     	clonezilla \
+    	zsh \
     	pyenv \
     	thunderbird \
     	qbittorrent \
@@ -20,6 +21,7 @@ function packages_base() {
        	dropbox \
        	musixmatch-bin \
        	visual-studio-code-bin \
+       	virt-manager \
        	slack-desktop \
        	sublime-text-3-imfix \
        	wondershaper-git \
@@ -42,20 +44,20 @@ function git_setup() {
 
 	user_input=0
 	while [ $user_input != "y" ]; do
-					echo "enter git user email:"
+					echo "Enter git user email:"
 					read user_email
-					echo "is this the correct email? [y/n]"
+					echo "Is this the correct email? [y/n]"
 					read user_input				
 	done
 
-	echo "  -> using git user email: $user_email"
+	echo "  -> Using git user email: $user_email"
 
 	ssh-keygen -t rsa -b 4096 -C "$user_email"
 
-	echo "  -> starting ssh agent"
+	echo "  -> Starting ssh agent"
 	eval "$(ssh-agent -s)"
 
-	echo "  -> adding ssh-key to ssh-agent"
+	echo "  -> Adding ssh-key to ssh-agent"
 	ssh-add ~/.ssh/id_rsa
 
 	key=`cat ~/.ssh/id_rsa.pub`
@@ -63,17 +65,17 @@ function git_setup() {
 	user_input=0
 	while [ $user_input != "y" ]; do
 
-					echo "  -> enter git username:"
+					echo "Enter git username:"
 					read user_name
-					echo "  -> is this the correct username? [y/n]"
+					echo "Is this the correct username? [y/n]"
 					read user_input				
 	done
 
 	user_input=0
 	while [ $user_input != "y" ]; do
-					echo "enter ssh-key title:"
+					echo "Enter ssh-key title:"
 					read ssh_title
-					echo "is this the correct ssh-key title? [y/n]"
+					echo "Is this the correct ssh-key title? [y/n]"
 					read user_input				
 	done
 	
@@ -90,7 +92,7 @@ function disclaimer() {
 			"having to read up on documentation and guides, to set" \
 			"things up yourself."
 
-	echo "  -> press enter to continue"
+	echo "Press enter to continue:"
 
 	chars="/-\|"
 
@@ -104,21 +106,25 @@ function disclaimer() {
   	kill $!
 }
 
-function bashrc_setup() {
-	echo "==> .bashrc setup initated"
-	mkdir -p backup	# if dir doen'st exist
-	chmod +x uninstall.sh 
+function zsh_setup() {
+	echo "==> zsh_setup initated"
+	sudo chsh -s /usr/bin/zsh
 
-	cp ~/.bashrc backup
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-	echo 'alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"' >> ~/.bashrc # exec git pull on all subdirs 
-	echo 'alias home="cd ~"' >> ~/.bashrc
+	echo "==> DONE"
+}
 
-	exec bash
-	echo "  -> DONE"
+function reboot() {
+	read -n1 -p "  -> For changes to take effect, you should reboot. Do it now? [y/n]" doit 
+	case $doit in  
+	  y|Y)  sudo shutdown now -r;; 
+	  n|N) printf "\n==> SETUP COMPLETE";; 
+	esac
 }
 
 disclaimer
 packages_base
 git_setup
-bashrc_setup
+zsh_setup
+reboot
