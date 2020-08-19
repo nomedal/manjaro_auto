@@ -1,1 +1,1 @@
-Put in scrpits in /bin/ or copy folder e.g. /home/<USER>/ and link it in .zshrc, or .bashrc if you use that.
+Put scripts in `/bin/` or copy folder to e.g. `/home/<USER>/` and link it in `.zshrc`, or `.bashrc` if you use that.
