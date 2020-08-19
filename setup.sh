@@ -18,7 +18,6 @@ function packages_base() {
        	latte-dock \
        	discord \
        	nordvpn-bin \
-       	dropbox \
        	musixmatch-bin \
        	visual-studio-code-bin \
        	virt-manager \
@@ -34,6 +33,9 @@ function packages_base() {
        	iptables \
        	arduino \
        	gparted \
+       	caprine \
+       	signal-desktop \
+       	#dropbox \
        	#balena-etcher \
        	#spotify \
 
@@ -108,7 +110,8 @@ function disclaimer() {
   	kill $!
 }
 
-function bashrc_setup() {
+
+function bashrc_setup() { #legacy code
 	echo "==> .bashrc setup initated"
 	mkdir -p backup	# if dir doen'st exist
 	chmod +x uninstall.sh 
