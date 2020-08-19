@@ -1,3 +1,0 @@
-#!/bin/zsh
-nordvpn disconnect
-nordvpn connect
