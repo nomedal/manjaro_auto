@@ -35,6 +35,7 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
+       	# temporarily broken packages
        	#dropbox \
        	#balena-etcher \
        	#spotify \
@@ -110,21 +111,6 @@ function disclaimer() {
   	kill $!
 }
 
-
-function bashrc_setup() { #legacy code
-	echo "==> .bashrc setup initated"
-	mkdir -p backup	# if dir doen'st exist
-	chmod +x uninstall.sh 
-
-	cp ~/.bashrc backup
-
-	echo 'alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"' >> ~/.bashrc # exec git pull on all subdirs 
-	echo 'alias home="cd ~"' >> ~/.bashrc
-
-	exec bash
-	echo "==> DONE"
-}
-
 function zsh_setup() {
 	echo "==> zsh_setup initated"
 	sudo chsh -s /usr/bin/zsh
@@ -139,12 +125,11 @@ function reboot() {
 	case $doit in  
 	  y|Y)  sudo shutdown now -r;; 
 	  n|N) printf "\n==> SETUP COMPLETE";; 
-	  #*) echo dont know ;; 
 	esac
 }
+
 disclaimer
-#packages_base
-#git_setup
-#bashrc_setup
+packages_base
+git_setup
 zsh_setup
 reboot
