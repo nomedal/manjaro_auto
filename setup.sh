@@ -35,6 +35,9 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
+		icestorm-git \
+		arachne-pnr-git \
+		yosys-git \
        	# temporarily broken packages
        	#dropbox \
        	#balena-etcher \
