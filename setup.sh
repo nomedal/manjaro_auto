@@ -18,7 +18,6 @@ function packages_base() {
        	latte-dock \
        	discord \
        	nordvpn-bin \
-       	musixmatch-bin \
        	visual-studio-code-bin \
        	virt-manager \
        	slack-desktop \
@@ -35,10 +34,12 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
+
        	# temporarily broken packages
        	#dropbox \
        	#balena-etcher \
        	#spotify \
+       	#musixmatch-bin \
 
    	echo "==> DONE"
 }
