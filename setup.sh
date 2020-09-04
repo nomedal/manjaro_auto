@@ -18,7 +18,6 @@ function packages_base() {
        	latte-dock \
        	discord \
        	nordvpn-bin \
-       	musixmatch-bin \
        	visual-studio-code-bin \
        	virt-manager \
        	slack-desktop \
@@ -35,13 +34,17 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
-		icestorm-git \
-		arachne-pnr-git \
-		yosys-git \
-       	# temporarily broken packages
+		
+		# packages for tinyfpga
+		#icestorm-git \
+		#arachne-pnr-git \
+		#yosys-git \
+       	
+		# temporarily broken packages
+       	#spotify \
        	#dropbox \
        	#balena-etcher \
-       	#spotify \
+       	#musixmatch-bin \
 
    	echo "==> DONE"
 }
@@ -131,8 +134,8 @@ function reboot() {
 	esac
 }
 
-disclaimer
+#disclaimer
 packages_base
-git_setup
-zsh_setup
-reboot
+#git_setup
+#zsh_setup
+#reboot
