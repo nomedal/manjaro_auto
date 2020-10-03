@@ -34,6 +34,8 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
+		powerline-fonts \
+		kvantum-qt5 \
 
        	# temporarily broken packages
        	#dropbox \
@@ -129,8 +131,8 @@ function reboot() {
 	esac
 }
 
-disclaimer
+#disclaimer
 packages_base
-git_setup
-zsh_setup
-reboot
+#git_setup
+#zsh_setup
+#reboot
