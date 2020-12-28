@@ -34,6 +34,7 @@ function packages_base() {
        	gparted \
        	caprine \
        	signal-desktop \
+		megasync \
 		
 		# packages for tinyfpga
 		#icestorm-git \
